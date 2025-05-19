@@ -100,6 +100,14 @@ pisa.stages.osc.scaling\_params module
    :undoc-members:
    :show-inheritance:
 
+pisa.stages.osc.spacetime\_params module
+----------------------------------------
+
+.. automodule:: pisa.stages.osc.spacetime_params
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 pisa.stages.osc.two\_nu\_osc module
 -----------------------------------
 

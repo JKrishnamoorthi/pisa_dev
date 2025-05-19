@@ -1171,7 +1171,7 @@ and an osc. stage….todo</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pisa.stages.osc.prob3.prob3">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pisa.stages.osc.prob3.</span></span><span class="sig-name descname"><span class="pre">prob3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nsi_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reparam_mix_matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">neutrino_decay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tomography_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lri_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">std_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pisa/stages/osc/prob3.html#prob3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pisa.stages.osc.prob3.prob3" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pisa.stages.osc.prob3.</span></span><span class="sig-name descname"><span class="pre">prob3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nsi_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reparam_mix_matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">neutrino_decay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tomography_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lri_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">st_geometry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">std_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pisa/stages/osc/prob3.html#prob3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pisa.stages.osc.prob3.prob3" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="pisa.core.html#pisa.core.stage.Stage" title="pisa.core.stage.Stage"><code class="xref py py-class docutils literal notranslate"><span class="pre">Stage</span></code></a></p>
 <p>Prob3-like oscillation PISA Pi class</p>
 <dl class="field-list simple">
@@ -1213,6 +1213,9 @@ and an osc. stage….todo</p>
 <span class="n">eps_tautau</span> <span class="p">:</span> <span class="n">quantity</span> <span class="p">(</span><span class="n">dimensionless</span><span class="p">)</span>
 <span class="n">decay_alpha3</span> <span class="p">:</span> <span class="n">quantity</span> <span class="p">(</span><span class="n">energy</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">v_lri</span> <span class="p">:</span> <span class="n">quantity</span> <span class="p">(</span><span class="n">eV</span><span class="p">)</span>
+<span class="n">lambda1</span> <span class="p">:</span> <span class="n">quantity</span> <span class="p">(</span><span class="n">eV</span><span class="o">^-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">lambda2</span> <span class="p">:</span> <span class="n">quantity</span> <span class="p">(</span><span class="n">eV</span><span class="o">^-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">lambda3</span> <span class="p">:</span> <span class="n">quantity</span> <span class="p">(</span><span class="n">eV</span><span class="o">^-</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Expected container keys are ..</p>
@@ -1350,6 +1353,91 @@ parameter, and returns scaling factor factors for inner and middle mantle.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pisa.stages.osc.scaling_params.Mass_scaling.density_scale">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">density_scale</span></span><a class="headerlink" href="#pisa.stages.osc.scaling_params.Mass_scaling.density_scale" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pisa.stages.osc.spacetime_params">
+<span id="pisa-stages-osc-spacetime-params-module"></span><h2>pisa.stages.osc.spacetime_params module<a class="headerlink" href="#module-pisa.stages.osc.spacetime_params" title="Link to this heading"></a></h2>
+<p>STParams: Spacetime geometry effect on neutrino oscillation (arXiv:2302.10945)</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pisa.stages.osc.spacetime_params.STParams">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pisa.stages.osc.spacetime_params.</span></span><span class="sig-name descname"><span class="pre">STParams</span></span><a class="reference internal" href="_modules/pisa/stages/osc/spacetime_params.html#STParams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pisa.stages.osc.spacetime_params.STParams" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Holds spacetime geometry parameters, i.e., lambda1, lambda2, lambda3</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lambda1</strong> (<em>float</em>) – expected to be given in eV^-1</p></li>
+<li><p><strong>lambda2</strong> (<em>float</em>) – expected to be given in eV^-1</p></li>
+<li><p><strong>lambda3</strong> (<em>float</em>) – expected to be given in eV^-1</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pisa.stages.osc.spacetime_params.STParams.lambda1">
+<span class="sig-name descname"><span class="pre">lambda1</span></span><a class="headerlink" href="#pisa.stages.osc.spacetime_params.STParams.lambda1" title="Link to this definition"></a></dt>
+<dd><p>Cf. parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pisa.stages.osc.spacetime_params.STParams.lambda2">
+<span class="sig-name descname"><span class="pre">lambda2</span></span><a class="headerlink" href="#pisa.stages.osc.spacetime_params.STParams.lambda2" title="Link to this definition"></a></dt>
+<dd><p>Cf. parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pisa.stages.osc.spacetime_params.STParams.lambda3">
+<span class="sig-name descname"><span class="pre">lambda3</span></span><a class="headerlink" href="#pisa.stages.osc.spacetime_params.STParams.lambda3" title="Link to this definition"></a></dt>
+<dd><p>Cf. parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pisa.stages.osc.spacetime_params.STParams.ST_matrix">
+<span class="sig-name descname"><span class="pre">ST_matrix</span></span><a class="headerlink" href="#pisa.stages.osc.spacetime_params.STParams.ST_matrix" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>3d real array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id13">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ST_matrix</span></span><a class="headerlink" href="#id13" title="Link to this definition"></a></dt>
+<dd><p>Space time geometry NSI  matrix</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id14">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">lambda1</span></span><a class="headerlink" href="#id14" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id15">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">lambda2</span></span><a class="headerlink" href="#id15" title="Link to this definition"></a></dt>
+<dd><p>lambda1</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id16">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">lambda3</span></span><a class="headerlink" href="#id16" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
