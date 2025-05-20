@@ -143,9 +143,9 @@
 <span class="sd">            eps_tautau : quantity (dimensionless)</span>
 <span class="sd">            decay_alpha3 : quantity (energy^2)</span>
 <span class="sd">            v_lri : quantity (eV)</span>
-<span class="sd">            lambda1 : quantity (eV^-1)</span>
-<span class="sd">            lambda2 : quantity (eV^-1)</span>
-<span class="sd">            lambda3 : quantity (eV^-1)</span>
+<span class="sd">            lambda1 : quantity ()</span>
+<span class="sd">            lambda2 : quantity ()</span>
+<span class="sd">            lambda3 : quantity ()</span>
 
 <span class="sd">        Expected container keys are .. ::</span>
 
@@ -533,9 +533,12 @@
                 <span class="n">container</span><span class="p">[</span><span class="s1">&#39;densities&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">density</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">container</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">max_layers</span><span class="p">))</span>
         
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">st_geometry</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">st_params</span><span class="o">.</span><span class="n">lambda1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">lambda1</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">m_as</span><span class="p">(</span><span class="s1">&#39;eV**-1&#39;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">st_params</span><span class="o">.</span><span class="n">lambda2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">lambda2</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">m_as</span><span class="p">(</span><span class="s1">&#39;eV**-1&#39;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">st_params</span><span class="o">.</span><span class="n">lambda3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">lambda3</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">m_as</span><span class="p">(</span><span class="s1">&#39;eV**-1&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">st_params</span><span class="o">.</span><span class="n">lambda1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">lambda1</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">m_as</span><span class="p">(</span>
+                <span class="s1">&#39;dimensionless&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">st_params</span><span class="o">.</span><span class="n">lambda2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">lambda2</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">m_as</span><span class="p">(</span>
+                <span class="s1">&#39;dimensionless&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">st_params</span><span class="o">.</span><span class="n">lambda3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">lambda3</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">m_as</span><span class="p">(</span>
+                <span class="s1">&#39;dimensionless&#39;</span><span class="p">)</span>
 
         <span class="c1"># now we can proceed to calculate the generalised matter potential matrix</span>
         <span class="n">std_mat_pot_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">FTYPE</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1.</span><span class="n">j</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">FTYPE</span><span class="p">)</span>

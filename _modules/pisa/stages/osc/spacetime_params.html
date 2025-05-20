@@ -150,7 +150,9 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">ST_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Space time geometry NSI  matrix&quot;&quot;&quot;</span>
         <span class="n">ST_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">CTYPE</span><span class="p">)</span>
-
+        
+        
+        <span class="c1"># ST_mat[0, 0] = self.lambda1 #- self.lambda1</span>
         <span class="n">ST_mat</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lambda2</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">lambda1</span>
         <span class="n">ST_mat</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lambda3</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">lambda1</span>
 
