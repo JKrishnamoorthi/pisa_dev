@@ -87,7 +87,6 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">pisa.stages.osc.nsi_params</span><span class="w"> </span><span class="kn">import</span> <span class="n">StdNSIParams</span><span class="p">,</span> <span class="n">VacuumLikeNSIParams</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pisa.stages.osc.osc_params</span><span class="w"> </span><span class="kn">import</span> <span class="n">OscParams</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pisa.stages.osc.decay_params</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecayParams</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pisa.stages.osc.spacetime_params</span><span class="w"> </span><span class="kn">import</span> <span class="n">STParams</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pisa.stages.osc.lri_params</span><span class="w"> </span><span class="kn">import</span> <span class="n">LRIParams</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pisa.stages.osc.scaling_params</span><span class="w"> </span><span class="kn">import</span> <span class="n">Mass_scaling</span><span class="p">,</span> <span class="n">Core_scaling_w_constrain</span><span class="p">,</span> <span class="n">Core_scaling_wo_constrain</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pisa.stages.osc.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Layers</span>
@@ -143,9 +142,6 @@
 <span class="sd">            eps_tautau : quantity (dimensionless)</span>
 <span class="sd">            decay_alpha3 : quantity (energy^2)</span>
 <span class="sd">            v_lri : quantity (eV)</span>
-<span class="sd">            lambda1 : quantity (dimensionless)</span>
-<span class="sd">            lambda2 : quantity (dimensionless)</span>
-<span class="sd">            lambda3 : quantity (dimensionless)</span>
 
 <span class="sd">        Expected container keys are .. ::</span>
 
@@ -169,7 +165,6 @@
       <span class="n">neutrino_decay</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
       <span class="n">tomography_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
       <span class="n">lri_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-      <span class="n">st_geometry</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
       <span class="o">**</span><span class="n">std_kwargs</span><span class="p">,</span>
     <span class="p">):</span>
 
@@ -281,19 +276,10 @@
                                  <span class="s1">&#39;innermantle_density_scale&#39;</span><span class="p">,</span>
                                  <span class="s1">&#39;middlemantle_density_scale&#39;</span>
             <span class="p">)</span>
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">st_geometry</span> <span class="o">=</span> <span class="n">st_geometry</span>
-        
-        <span class="k">if</span> <span class="n">st_geometry</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">st_flag</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="n">st_params</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;lambda1&#39;</span><span class="p">,</span> <span class="s1">&#39;lambda2&#39;</span><span class="p">,</span> <span class="s1">&#39;lambda3&#39;</span><span class="p">,)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">st_params</span> <span class="o">=</span> <span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">st_flag</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 
 
         <span class="n">expected_params</span> <span class="o">=</span> <span class="p">(</span><span class="n">expected_params</span> <span class="o">+</span> <span class="n">nsi_params</span> <span class="o">+</span> <span class="n">decay_params</span>
-                           <span class="o">+</span> <span class="n">lri_params</span> <span class="o">+</span> <span class="n">tomography_params</span> <span class="o">+</span> <span class="n">st_params</span><span class="p">)</span>
+                           <span class="o">+</span> <span class="n">lri_params</span> <span class="o">+</span> <span class="n">tomography_params</span><span class="p">)</span>
 
         <span class="c1"># init base class</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
@@ -311,8 +297,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">decay_matrix</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lri_params</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lri_pot</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">st_params</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ST_matrix</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="c1"># The interaction potential (Hamiltonian) just scales with the</span>
         <span class="c1"># electron density N_e for propagation through the Earth,</span>
         <span class="c1"># even(to very good approx.) in the presence of generalised interactions</span>
@@ -363,10 +347,6 @@
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">tomography_type</span> <span class="o">==</span> <span class="s2">&quot;mass_of_core_wo_constrain&quot;</span><span class="p">:</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Working without any external constraints&#39;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">tomography_params</span> <span class="o">=</span> <span class="n">Core_scaling_wo_constrain</span><span class="p">()</span>
-            
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">st_geometry</span><span class="p">:</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Working with ST geometry&#39;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">st_params</span> <span class="o">=</span> <span class="n">STParams</span><span class="p">()</span>
 
 
         <span class="c1"># setup the layers</span>
@@ -427,9 +407,6 @@
                           <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen_mat_pot_matrix_complex</span><span class="p">)</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;decay matrix:</span><span class="se">\n</span><span class="si">%s</span><span class="s1">&#39;</span>
                           <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">decay_matix</span><span class="p">)</span>
-        
-        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;space time matrix:</span><span class="se">\n</span><span class="si">%s</span><span class="s1">&#39;</span>
-                      <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">ST_matrix</span><span class="p">)</span>
 
         <span class="n">propagate_array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">osc_params</span><span class="o">.</span><span class="n">dm_matrix</span><span class="p">,</span> <span class="c1"># pylint: disable = unexpected-keyword-arg, no-value-for-parameter</span>
                         <span class="n">mix_matrix</span><span class="p">,</span>
@@ -437,8 +414,6 @@
                         <span class="bp">self</span><span class="o">.</span><span class="n">decay_flag</span><span class="p">,</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">decay_matix</span><span class="p">,</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">lri_pot</span><span class="p">,</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">st_flag</span><span class="p">,</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">ST_matrix</span><span class="p">,</span>
                         <span class="n">nubar</span><span class="p">,</span>
                         <span class="n">e_array</span><span class="p">,</span>
                         <span class="n">rho_array</span><span class="p">,</span>
@@ -531,14 +506,7 @@
             <span class="k">for</span> <span class="n">container</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">calcLayers</span><span class="p">(</span><span class="n">container</span><span class="p">[</span><span class="s1">&#39;true_coszen&#39;</span><span class="p">])</span>
                 <span class="n">container</span><span class="p">[</span><span class="s1">&#39;densities&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">density</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">container</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">max_layers</span><span class="p">))</span>
-        
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">st_geometry</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">st_params</span><span class="o">.</span><span class="n">lambda1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">lambda1</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">m_as</span><span class="p">(</span>
-                <span class="s1">&#39;dimensionless&#39;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">st_params</span><span class="o">.</span><span class="n">lambda2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">lambda2</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">m_as</span><span class="p">(</span>
-                <span class="s1">&#39;dimensionless&#39;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">st_params</span><span class="o">.</span><span class="n">lambda3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">lambda3</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">m_as</span><span class="p">(</span>
-                <span class="s1">&#39;dimensionless&#39;</span><span class="p">)</span>
+
 
         <span class="c1"># now we can proceed to calculate the generalised matter potential matrix</span>
         <span class="n">std_mat_pot_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">FTYPE</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1.</span><span class="n">j</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">FTYPE</span><span class="p">)</span>
@@ -575,10 +543,6 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="c1"># TODO: this just repeats the logic from init with slightly different code!</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Implemented symmetries are </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">types_lri</span><span class="p">)</span>
-        
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">st_geometry</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">ST_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">st_params</span><span class="o">.</span><span class="n">ST_matrix</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;ST matrix:</span><span class="se">\n</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">ST_matrix</span><span class="p">)</span>
 
 
         <span class="k">for</span> <span class="n">container</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
